@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+Blogs Page
+{% endblock %}
+{% block content %}
+<h1 class="text-3xl">Welcome to my blogs page</h1>
+<div class="grid grid-cols-3 gap-4 m-4">
+{%for blog in blogs%}
+<div class="border p-5 border-blue-500 bg-blue-300">
+    <h2 class="p-1 text-2xl">{{blog.title}}</h2>
+    <img class="p-2 mx-auto h-48 w-auto object-cover align-center"src="{{blog.image.url}}" alt="blog image">
+    <h3 class="p-2 text-l">{{blog.content}}</h3>
+    <h3>{{blog.id}}</h3>
+    <a href="{% url 'blog_details' blog.id%}">
+        <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Read</button>
+    </a>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+
