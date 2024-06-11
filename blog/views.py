@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import blogPosts,blogReviews
 from django.shortcuts import get_object_or_404,redirect
-from .forms import BlogForm,CreateBlogForm,AddReviewForm
+from .forms import BlogForm,CreateBlogForm,AddReviewForm,UpdateReviewForm
 # Create your views here.
 def blog(request):
     blogs=blogPosts.objects.all()
@@ -52,3 +52,16 @@ def add_review(request):
     else:
         form=AddReviewForm()
     return render(request,'add_review.html',{'form':form})
+
+def update_review(request,id):
+    if request.method=="POST":
+        review=blogReviews.objects.get(pk=id)
+        form=UpdateReviewForm(request.POST,instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('/blog/reviews')
+    else:
+        review=blogReviews.objects.get(pk=id)
+        form=AddReviewForm(instance=review)
+
+    return render(request,'update_review.html',{'form':form})

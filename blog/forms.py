@@ -28,3 +28,11 @@ class AddReviewForm(forms.ModelForm):
             
             'comment':forms.TextInput(attrs={'class':'form-control'}),
         }
+class UpdateReviewForm(forms.ModelForm):
+    class Meta:
+        model=blogReviews
+        fields=['blog','comment']
+        widgets={
+            'blog':forms.TextInput(attrs={'class':'form-control'}),
+            'comment':forms.TextInput(attrs={'class':'form-control'}),
+        }

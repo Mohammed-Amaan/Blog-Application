@@ -1,0 +1,20 @@
+ {% extends "layout.html" %}
+ {% block title %}
+ Update Review
+ {% endblock %}
+ <div class="container d-flex justify-content-center align-items-center vh-100">
+    {% block content %}
+    <div class="row w-100">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center">Update Review</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <div class="d-flex justify-content-center"> 
+                <button type="submit" class="btn btn-primary align-center" value="Update Review">Update Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</div>
