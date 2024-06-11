@@ -3,5 +3,25 @@
 Home Page
 {% endblock %}
 {% block content %}
-<h1 class="bg-yellow-500 text-3xl">Welcome to my home page</h1>
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">Blogged !</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Welcome to our blog! Here, we share insightful articles, inspiring stories, and helpful tips to enrich your knowledge and spark your imagination. Join us on this journey of discovery and exploration as we delve into a diverse range of topics. Happy reading!</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <form action="{% url 'blog' %}">
+            {% csrf_token %}
+             <form action="{% url 'blog' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3">Explore</button>
+    </form>
+        </form>
+      </div>
+    </div>
+    <div class="overflow-hidden d-flex justify-content-center align-items-center" style="max-height: 30vh;">
+      <div>
+        <img src="https://www.creativemotions.it/wp-content/uploads/2020/07/Cos-e-un-blog-definizione-768x403.png" class="img-fluid border rounded-3 shadow-lg mb-4 align-center" alt="Example image" width="700" height="500" loading="lazy">
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from .models import blogPosts
-from django.shortcuts import get_object_or_404
-from .forms import BlogForm
+from django.shortcuts import render,redirect
+from .models import blogPosts,blogReviews
+from django.shortcuts import get_object_or_404,redirect
+from .forms import BlogForm,CreateBlogForm,AddReviewForm
 # Create your views here.
 def blog(request):
     blogs=blogPosts.objects.all()
@@ -21,3 +21,34 @@ def search_blog(request):
     else:
         form=BlogForm()
     return render(request,'search_blog.html',{'blog':blog,'form':form})
+
+def create_blog(request):
+    if request.method=='POST':
+        form=CreateBlogForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/blog')
+            
+    else:
+        form=CreateBlogForm()    
+    return render(request,"create_blog.html",{"form":form})
+
+def delete_blog(request,id):
+    if request.method=='POST':
+        form=blogPosts.objects.get(pk=id)
+        form.delete()
+        return redirect('/blog')
+    
+def reviews(request):
+    reviews=blogReviews.objects.all()
+    return render(request,'reviews.html',{'reviews':reviews})
+
+def add_review(request):
+    if request.method=="POST":
+        form=AddReviewForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('/blog/reviews')
+    else:
+        form=AddReviewForm()
+    return render(request,'add_review.html',{'form':form})

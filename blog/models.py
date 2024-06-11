@@ -4,6 +4,7 @@ from django.utils import timezone
 class blogPosts(models.Model):
     title=models.CharField(max_length=100)
     content=models.TextField()
+    author=models.CharField(max_length=50)
     image=models.ImageField(upload_to='blogs/')
     date_added=models.DateTimeField(default=timezone.now)
 

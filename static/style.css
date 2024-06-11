@@ -1,7 +1,15 @@
-body{
-    background-color:burlywood;
-    color: rgb(83, 5, 5);
+:root {
+    --bs-body-bg: #f0f0f0; /* New background color */
 }
 h1{
     text-align: center;
+}
+.navbar{
+    background-color: black;
+}
+.custom-img {
+    width: 100%;
+    height: auto;
+    max-width: 720px; /* Increase as needed */
+    max-height: 500px; /* Increase as needed */
 }

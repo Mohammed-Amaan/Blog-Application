@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}
+Reviews
+{% endblock %}
+{% block content %}
+<h1 class="text-center">Reviews</h1>
+{% if reviews %}
+<div class="d-flex justify-content-center"> 
+  <div class="col-sm-8">
+    <table class="table table-warning table-hover table-striped-columns">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 40%; text-align:center">Blog Title</th> 
+          <th scope="col" style="width: 40%; text-align:center">Review</th> 
+          <th scope="col" style="width: 20%; text-align:center">Date Given</th> 
+        </tr>
+      </thead>
+      <tbody>
+        {% for review in reviews %}
+        <tr>
+          <td>{{review.blog}}</td>
+          <td><em>{{review.comment}}</em></td>
+          <td>{{review.date_added}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+<h2 class="text-center">No Reviews</h2>
+{% endif %}
+<div class="d-flex justify-content-center"> 
+    <form action="{% url 'add_review' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Add a Review!</button>
+    </form>
+</div>
+{% endblock %}
