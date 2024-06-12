@@ -1,6 +1,7 @@
 from django import forms
 from .models import blogPosts,blogReviews
 
+
 class BlogForm(forms.Form):
     blog_title=forms.CharField(max_length=100,label="Enter Blog Title",widget=forms.TextInput(attrs={'class': 'form-control'}))
     
@@ -25,7 +26,6 @@ class AddReviewForm(forms.ModelForm):
         model=blogReviews
         fields=['blog','comment']
         widgets={
-            
             'comment':forms.TextInput(attrs={'class':'form-control'}),
         }
 class UpdateReviewForm(forms.ModelForm):
@@ -36,3 +36,4 @@ class UpdateReviewForm(forms.ModelForm):
             'blog':forms.TextInput(attrs={'class':'form-control'}),
             'comment':forms.TextInput(attrs={'class':'form-control'}),
         }
+
