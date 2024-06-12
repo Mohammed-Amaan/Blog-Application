@@ -21,24 +21,31 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link fs-5" href="/">Home</a>
-      </li>
-          <li class="nav-item">
-              <a class="nav-link fs-5" href="/blog">Blogs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fs-5" href="/blog/reviews">Reviews</a>
-        </li>
-          <li class="nav-item">
-              <a class="nav-link fs-5" href="/blog/create">Create Blog</a>
-          </li>       
-          <li class="nav-item">
-              <a class="nav-link fs-5" href="/admin">Admin</a>
-          </li>
-      </ul>
+      <div class="container-fluid">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="/blog">Blogs</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="/blog/reviews">Reviews</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="/blog/create">Create Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white fs-5" href="/admin">Admin</a>
+              </li>
+          </ul>
+          <form class="d-flex" action="{% url 'logout' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-warning my-1 btn-m">Logout</button>
+          </form>
+      </div>
   </nav>
+  
   
     <div class="container mt-5">
     {% block content %}
